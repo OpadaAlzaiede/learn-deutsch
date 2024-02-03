@@ -48,6 +48,10 @@ defineProps({
                 >
             </template>
         </div>
+
+        <div class="text-xl text-gray-900">
+            Hello to German Learning Website.
+        </div>
     </div>
 </template>
 

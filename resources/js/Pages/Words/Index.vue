@@ -103,7 +103,7 @@
                                     <TableDataCell>{{ word.language_level }}</TableDataCell>
                                     <TableDataCell class="text-sm">{{ word.user }}</TableDataCell>
                                     <TableDataCell class="flex justify-between">
-                                        <Link :href="route('words.create')">
+                                        <Link :href="route('words.issue.create', word.id)">
                                             <button class="text-sm text-red-400 underline">report issue</button>
                                         </Link>
                                     </TableDataCell>

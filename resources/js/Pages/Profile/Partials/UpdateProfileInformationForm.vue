@@ -3,6 +3,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { computed } from 'vue'
 import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 
 defineProps({
@@ -14,11 +15,13 @@ defineProps({
     },
 });
 
-const user = usePage().props.auth.user;
+const page = usePage()
+
+const user = computed(() => page.props.auth.user)
 
 const form = useForm({
     name: user.name,
-    email: user.email,
+    email: user.email
 });
 </script>
 

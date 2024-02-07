@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use \App\Http\Controllers\WordController;
+use \App\Http\Controllers\Issues\WordIssueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     /* Words */
+    Route::get('words/{id}/issue', [WordIssueController::class, 'create'])->name('words.issue.create');
+    Route::post('words/{id}/issue', [WordIssueController::class, 'store'])->name('words.issue.store');
     Route::resource('/words', WordController::class);
 });
 

@@ -86,7 +86,7 @@
                             <template #header>
                                 <TableRow>
                                     <TableHeaderCell>WORD</TableHeaderCell>
-                                    <TableHeaderCell>ARABIC TRANSLATION</TableHeaderCell>
+                                    <TableHeaderCell> ARABIC TRANSLATION</TableHeaderCell>
                                     <TableHeaderCell>ENGLISH TRANSLATION</TableHeaderCell>
                                     <TableHeaderCell>TYPE</TableHeaderCell>
                                     <TableHeaderCell>LEVEL</TableHeaderCell>

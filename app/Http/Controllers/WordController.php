@@ -36,6 +36,7 @@ class WordController extends Controller
             'words' => Word::query()
                         ->levels($request->only('language_levels'))
                         ->types($request->only('types'))
+                        ->orderBy('language_level_id')
                         ->paginate(10)
                         ->withQueryString()
                         ->through(fn ($word) => [

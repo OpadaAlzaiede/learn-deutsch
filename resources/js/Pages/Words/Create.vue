@@ -1,6 +1,6 @@
 <script setup>
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-    import { Head, Link, useForm  } from '@inertiajs/vue3';
+    import { Head, Link, useForm  } from '@inertiajs/inertia-vue3';
     import InputError from '@/Components/InputError.vue';
     import InputLabel from '@/Components/InputLabel.vue';
     import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -38,7 +38,7 @@
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Create new word</h2>
                 <Link :href="route('words.index')">
-                    <button class="text-indigo-400">Back</button>
+                    <button class="text-indigo-400 text-lg underline">Back</button>
                 </Link>
             </div>
         </template>

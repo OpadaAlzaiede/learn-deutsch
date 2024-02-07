@@ -6,19 +6,37 @@ use App\Http\Requests\StoreWordRequest;
 use App\Models\LanguageLevel;
 use App\Models\Type;
 use App\Models\Word;
+use App\Services\LanguageLevelService;
+use App\Services\TypeService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class WordController extends Controller
 {
+    protected $languageLevelService;
+    protected $typeService;
+
+    public function __construct(LanguageLevelService $languageLevelService, TypeService $typeService)
+    {
+        $this->languageLevelService = $languageLevelService;
+        $this->typeService = $typeService;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        $language_levels = $this->languageLevelService->index();
+        $types = $this->typeService->index();
+
         return Inertia::render('Words/Index', [
-            'words' => Word::paginate(10)
+            'words' => Word::query()
+                        ->levels($request->only('language_levels'))
+                        ->types($request->only('types'))
+                        ->paginate(10)
                         ->withQueryString()
                         ->through(fn ($word) => [
                             'id' => $word->id,
@@ -29,6 +47,8 @@ class WordController extends Controller
                             'language_level' => $word->languageLevel?->level,
                             'user' => $word->user?->name
                         ]),
+            'types' => $types,
+            'language_levels' => $language_levels
         ]);
     }
 

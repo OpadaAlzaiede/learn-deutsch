@@ -2,7 +2,7 @@ import { ref, unref, withCtx, createTextVNode, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent } from "vue/server-renderer";
 import { _ as _sfc_main$1, a as _sfc_main$2, b as _sfc_main$3 } from "./TextInput-ZYq9yc79.js";
 import { P as PrimaryButton } from "./PrimaryButton-PXo36_k0.js";
-import { useForm } from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 import "./_plugin-vue_export-helper-yVxbj29m.js";
 const _sfc_main = {
   __name: "UpdatePasswordForm",

@@ -35,4 +35,30 @@ class Word extends Model
 
         return $this->belongsTo(User::class);
     }
+
+    public function scopeLevels($query, array $levels) {
+
+        $query->when($levels ?? null, function($query, $levels) {
+
+            $levelNames = collect($levels)->flatten();
+
+            $query->whereHas('languageLevel', function($levelQuery) use ($levelNames){
+
+                $levelQuery->whereIn('level', $levelNames);
+            });
+        });
+    }
+
+    public function scopeTypes($query, array $types): void {
+
+        $query->when($types ?? null, function($query, $types) {
+
+            $typeNames = collect($types)->flatten();
+
+            $query->whereHas('type', function($typeQuery) use ($typeNames){
+
+                $typeQuery->whereIn('type', $typeNames);
+            });
+        });
+    }
 }

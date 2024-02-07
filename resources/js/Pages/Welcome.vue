@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 
 defineProps({
     canLogin: {
@@ -47,6 +47,10 @@ defineProps({
                     >Register</Link
                 >
             </template>
+        </div>
+
+        <div class="text-xl text-gray-900">
+            Hello to German Learning Website.
         </div>
     </div>
 </template>

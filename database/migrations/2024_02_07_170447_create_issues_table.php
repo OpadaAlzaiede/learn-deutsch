@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
             $table->dateTime('date');
-            $table->foreignId('user_id')->constrained('users', 'id');
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->morphs('issueable');
             $table->string('issue_title', 100);
             $table->text('suggested_solution');

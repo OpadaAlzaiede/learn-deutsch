@@ -23909,7 +23909,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "text-lg font-medium text-gray-900 dark:text-gray-100"
 }, "Delete Account"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-1 text-sm text-gray-600 dark:text-gray-400"
-}, " Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain. ")], -1 /* HOISTED */);
+}, " Once your account is deleted, all of its resources and data will be permanently deleted. ")], -1 /* HOISTED */);
 var _hoisted_3 = {
   "class": "p-6"
 };

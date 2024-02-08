@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(10)->create();
 
-        $types = $this->seedTypes();
-        $levels = $this->seedLevels();
+        $types = Type::all();
+        $levels = LanguageLevel::all();
 
         foreach ($types as $type) {
 
@@ -32,35 +32,4 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    protected function seedTypes(): array {
-
-        $languageTypes = [];
-
-        $types = config('language_setup.types');
-
-        foreach ($types as $type) {
-
-            array_push($languageTypes, Type::create([
-                'type' => $type
-            ]));
-        }
-
-        return $languageTypes;
-    }
-
-    protected function seedLevels(): array {
-
-        $languageLevels = [];
-
-        $levels = config('language_setup.language_levels');
-
-        foreach ($levels as $level) {
-
-            array_push($languageLevels, LanguageLevel::create([
-                'level' => $level
-            ]));
-        }
-
-        return $languageLevels;
-    }
 }

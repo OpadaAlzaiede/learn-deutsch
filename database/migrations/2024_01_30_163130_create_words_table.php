@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('en_translation')->comment('the english translation of the word.');
             $table->foreignId('language_level_id')->constrained('language_levels', 'id');
             $table->foreignId('type_id')->constrained('types', 'id');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('users', 'id')->nullOnDelete();
 
             $table->timestamps();
         });

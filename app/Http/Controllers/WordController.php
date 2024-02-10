@@ -29,7 +29,6 @@ class WordController extends Controller
      */
     public function index(Request $request): Response
     {
-
         $language_levels = $this->languageLevelService->index();
         $types = $this->typeService->index();
 

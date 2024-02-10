@@ -13,7 +13,7 @@ class LanguageLevelService
 
         return Cache::remember('language_levels', 24 * 60, function () {
 
-            return LanguageLevel::select(['level'])->get();
+            return LanguageLevel::all();
         });
     }
 }

@@ -14,7 +14,7 @@ class TypeService
 
         return Cache::remember('types', 24 * 60, function () {
 
-            return Type::select(['type'])->get();;
+            return Type::get();
         });
     }
 }

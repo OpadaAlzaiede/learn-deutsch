@@ -6,6 +6,7 @@ namespace App\Services\Quiz;
 
 use App\Models\Quiz;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class UserQuizService implements WriteQuizService, QueryQuizService
@@ -28,7 +29,7 @@ class UserQuizService implements WriteQuizService, QueryQuizService
                     ]);
     }
 
-    public function show(string $id)
+    public function show(int $id)
     {
         // TODO: Implement show() method.
     }
@@ -43,5 +44,12 @@ class UserQuizService implements WriteQuizService, QueryQuizService
         ]);
     }
 
+    public function getById(int $id): Model
+    {
+        return Quiz::query()
+                    ->where('user_id', Auth::id())
+                    ->isFinished()
+                    ->findOrFail($id);
+    }
 
 }

@@ -80,10 +80,7 @@ class QuizController extends Controller
 
     public function getQuestions(int $quizId): Response {
 
-        $quiz = Quiz::query()
-                        ->where('user_id', Auth::id())
-                        ->isFinished()
-                        ->findOrFail($quizId);
+        $quiz = $this->queryQuizService->getById($quizId);
 
         $questions = $quiz->questions()
                             ->paginate(3)
@@ -103,10 +100,7 @@ class QuizController extends Controller
     public function submit(Request $request) {
 
         $quizId = $request->input('quiz_id');
-        $quiz = Quiz::query()
-                    ->where('user_id', Auth::id())
-                    ->isFinished()
-                    ->findOrFail($quizId);
+        $quiz = $this->queryQuizService->getById($quizId);
 
         $solutions = $request->input('solutions');
 

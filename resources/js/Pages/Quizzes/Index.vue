@@ -30,30 +30,43 @@
             </div>
         </template>
 
-        <div v-for="quiz in quizzes.data" :key="quiz.id">
-            <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="rounded-md shadow overflow-x-auto" :class="(quiz.score > (quiz.number_of_words  / 2) ) ? 'bg-green-100' : 'bg-red-100'">
-                            <div class="mx-auto rounded overflow-hidden shadow-lg flex justify-between">
-                                <div class="px-6 py-4">
-                                    <div class="font-bold text-xl mb-2">{{quiz.language_level}}</div>
-                                    <p class="text-gray-700 text-base">
-                                        {{ quiz.date }}
-                                    </p>
-                                </div>
-                                <div class="px-6 py-4 mt-2">
-                                    score: {{ quiz.score }} / {{ quiz.number_of_words }}
+        <div v-if="quizzes.data.length > 0">
+            <div v-for="quiz in quizzes.data" :key="quiz.id">
+                <div class="py-12">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="rounded-md shadow overflow-x-auto" :class="(quiz.score > (quiz.number_of_words  / 2) ) ? 'bg-green-100' : 'bg-red-100'">
+                                <div class="mx-auto rounded overflow-hidden shadow-lg flex justify-between">
+                                    <div class="px-6 py-4">
+                                        <div class="font-bold text-xl mb-2">{{quiz.language_level}}</div>
+                                        <p class="text-gray-700 text-base">
+                                            {{ quiz.date }}
+                                        </p>
+                                    </div>
+                                    <div class="px-6 py-4 mt-2">
+                                        score: {{ quiz.score }} / {{ quiz.number_of_words }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <pagination class="mt-6" :links="quizzes.links" />
+                </div>
+            </div>
         </div>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <pagination class="mt-6" :links="quizzes.links" />
+        <div v-else>
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="py-6 px-6 bg-white rounded-md shadow overflow-x-auto text-center text-xl">
+                            <h1>No quizzes yet!</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </AuthenticatedLayout>

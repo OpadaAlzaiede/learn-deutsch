@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\LanguageLevel;
 use Database\Seeders\LanguageLevelSeeder;
 use Illuminate\Console\Command;
 
@@ -26,8 +27,15 @@ class LanguageLevelSeederCommand extends Command
      */
     public function handle(LanguageLevelSeeder $languageLevelSeeder)
     {
+        if(LanguageLevel::query()->count() > 0) {
+
+            $this->error('Language Levels have already been seeded !');
+            return;
+        }
+
         $this->info('Seeding Language Levels...');
         $languageLevelSeeder->run();
         $this->info('Seeded successfully.');
+        $this->newLine();
     }
 }

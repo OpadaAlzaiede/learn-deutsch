@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use \App\Http\Controllers\WordController;
 use \App\Http\Controllers\Issues\WordIssueController;
+use \App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::get('words/{id}/issue', [WordIssueController::class, 'create'])->name('words.issue.create');
     Route::post('words/{id}/issue', [WordIssueController::class, 'store'])->name('words.issue.store');
     Route::resource('/words', WordController::class);
+
+    /* Quizzes */
+    Route::get('/quizzes/{id}/questions', [QuizController::class, 'getQuestions'])->name('quizzes.questions');
+    Route::post('/quizzes/submit', [QuizController::class, 'submit'])->name('quizzes.submit');
+    Route::resource('/quizzes', QuizController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -22435,8 +22435,6 @@ __webpack_require__.r(__webpack_exports__);
     var props = __props;
     var createForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
       word: '',
-      ar_translation: '',
-      en_translation: '',
       type_id: null,
       language_level_id: null
     });
@@ -25072,12 +25070,6 @@ var _hoisted_9 = {
   "class": "mt-4"
 };
 var _hoisted_10 = {
-  "class": "mt-4"
-};
-var _hoisted_11 = {
-  "class": "mt-4"
-};
-var _hoisted_12 = {
   "class": "mt-4 max-w-6xl flex lg:justify-center"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -25115,43 +25107,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-2",
         message: $setup.createForm.errors.word
       }, null, 8 /* PROPS */, ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
-        "for": "ar_translation",
-        value: "arabic translation"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
-        id: "ar_translation",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: $setup.createForm.ar_translation,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $setup.createForm.ar_translation = $event;
-        }),
-        required: "",
-        autocomplete: "ar_translation"
-      }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputError"], {
-        "class": "mt-2",
-        message: $setup.createForm.errors.ar_translation
-      }, null, 8 /* PROPS */, ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
-        "for": "en_translation",
-        value: "english translation"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
-        id: "en_translation",
-        type: "text",
-        "class": "mt-1 block w-full",
-        modelValue: $setup.createForm.en_translation,
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $setup.createForm.en_translation = $event;
-        }),
-        required: "",
-        autocomplete: "en_translation"
-      }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputError"], {
-        "class": "mt-2",
-        message: $setup.createForm.errors.en_translation
-      }, null, 8 /* PROPS */, ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
         "for": "language_levels",
         value: "level"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["VueMultiselect"], {
         modelValue: $setup.createForm.language_level_id,
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $setup.createForm.language_level_id = $event;
         }),
         options: $props.language_levels,
@@ -25160,12 +25120,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Pick one",
         label: "level",
         "track-by": "id"
-      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
+      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
         "for": "types",
         value: "type"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["VueMultiselect"], {
         modelValue: $setup.createForm.type_id,
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.createForm.type_id = $event;
         }),
         options: $props.types,
@@ -25174,7 +25134,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Pick one",
         label: "type",
         "track-by": "id"
-      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["PrimaryButton"], {
+      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["PrimaryButton"], {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["max-w-3xl ms-4", {
           'opacity-25': $setup.createForm.processing
         }]),

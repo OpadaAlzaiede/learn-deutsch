@@ -12,7 +12,7 @@ class Word extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['word', 'ar_translation', 'en_translation', 'language_level_id', 'type_id'];
+    protected $fillable = ['word', 'language_level_id', 'type_id'];
 
     public static function boot() {
 

@@ -15,8 +15,6 @@
 
     const createForm = useForm({
         word: '',
-        ar_translation: '',
-        en_translation: '',
         type_id: null,
         language_level_id: null
     });
@@ -61,36 +59,6 @@
                                 />
 
                                 <InputError class="mt-2" :message="createForm.errors.word" />
-                            </div>
-
-                            <div class="mt-4">
-                                <InputLabel for="ar_translation" value="arabic translation" />
-
-                                <TextInput
-                                    id="ar_translation"
-                                    type="text"
-                                    class="mt-1 block w-full"
-                                    v-model="createForm.ar_translation"
-                                    required
-                                    autocomplete="ar_translation"
-                                />
-
-                                <InputError class="mt-2" :message="createForm.errors.ar_translation" />
-                            </div>
-
-                            <div class="mt-4">
-                                <InputLabel for="en_translation" value="english translation" />
-
-                                <TextInput
-                                    id="en_translation"
-                                    type="text"
-                                    class="mt-1 block w-full"
-                                    v-model="createForm.en_translation"
-                                    required
-                                    autocomplete="en_translation"
-                                />
-
-                                <InputError class="mt-2" :message="createForm.errors.en_translation" />
                             </div>
 
                             <div class="mt-4">

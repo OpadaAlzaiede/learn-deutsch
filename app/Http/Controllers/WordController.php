@@ -60,7 +60,7 @@ class WordController extends Controller
     {
         $this->wordService->store($request->validated());
 
-        session()->flash('message', 'created successfully');
+        session()->flash('message', 'created successfully, the translation will be added soon.');
         session()->flash('success', true);
 
         return to_route('words.index');

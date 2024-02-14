@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('word');
-            $table->string('ar_translation')->comment('the arabic translation of the word.');
-            $table->string('en_translation')->comment('the english translation of the word.');
+            $table->string('ar_translation')->comment('the arabic translation of the word.')->nullable();
+            $table->string('en_translation')->comment('the english translation of the word.')->nullable();
             $table->foreignId('language_level_id')->constrained('language_levels', 'id');
             $table->foreignId('type_id')->constrained('types', 'id');
             $table->foreignId('user_id')->nullable()->constrained('users', 'id')->nullOnDelete();

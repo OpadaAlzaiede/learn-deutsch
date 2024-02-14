@@ -3,6 +3,7 @@
 namespace App\Services;
 
 
+use App\Jobs\TranslationJob;
 use App\Models\Word;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -29,12 +30,12 @@ class WordService {
 
     public function store(array $data): void {
 
-        Word::create([
+        $word = Word::create([
             'word' => $data['word'],
-            'ar_translation' => $data['ar_translation'],
-            'en_translation' => $data['en_translation'],
             'language_level_id' => $data['language_level_id'],
             'type_id' => $data['type_id']
         ]);
+
+        TranslationJob::dispatch($word);
     }
 }

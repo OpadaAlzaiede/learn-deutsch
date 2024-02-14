@@ -25,9 +25,7 @@ class StoreWordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'word' => ['required', 'string', Rule::unique('words', 'word'), new TranslationCheckRule()],
-            'ar_translation' => ['required', 'string', new LanguageCheckRule("ar", "fa")],
-            'en_translation' => ['required', 'string', new LanguageCheckRule("en")],
+            'word' => ['required', 'string', Rule::unique('words', 'word')],
             'language_level_id' => ['required', Rule::exists('language_levels', 'id')],
             'type_id' => ['required', Rule::exists('types', 'id')],
         ];

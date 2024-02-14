@@ -2,18 +2,18 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Type;
-use Database\Seeders\TypeSeeder;
+use Database\Seeders\RoleSeeder;
 use Illuminate\Console\Command;
+use Spatie\Permission\Models\Role;
 
-class TypeSeederCommand extends Command
+class RoleSeederCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'types:seed';
+    protected $signature = 'roles:seed';
 
     /**
      * The console command description.
@@ -25,16 +25,16 @@ class TypeSeederCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(TypeSeeder $typeSeeder)
+    public function handle(RoleSeeder $roleSeeder)
     {
-        if(Type::query()->count() > 0) {
+        if(Role::query()->count() > 0) {
 
-            $this->error('Types have already been seeded !');
+            $this->error('Roles have already been seeded !');
             return;
         }
 
-        $this->info('Seeding Types...');
-        $typeSeeder->run();
+        $this->info('Seeding Roles...');
+        $roleSeeder->run();
         $this->info('Seeded successfully.');
         $this->newLine();
     }

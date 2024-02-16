@@ -50,7 +50,7 @@
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Words</h2>
                 <Link :href="route('words.create')">
-                    <button class="text-indigo-400 text-lg underline">Add new Word</button>
+                    <button class="text-indigo-400 text-lg underline">add new word</button>
                 </Link>
             </div>
         </template>

@@ -31,6 +31,11 @@
                         <div class="text-center text-xl">
                             Your Result is: {{ correctAnswers }} / {{ totalQuestions }}
                         </div>
+                        <div class="text-center text-xl mt-5">
+                            <Link :href="route('quizzes.index')">
+                                <button class="text-indigo-400 text-lg underline">view my quizzes</button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

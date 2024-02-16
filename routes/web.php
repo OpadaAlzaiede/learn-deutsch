@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     /* Quizzes */
     Route::get('/quizzes/{id}/questions', [QuizController::class, 'getQuestions'])->name('quizzes.questions');
     Route::post('/quizzes/submit', [QuizController::class, 'submit'])->name('quizzes.submit');
+    Route::post('/quizzes/{id}/cancel', [QuizController::class, 'cancel'])->name('quizzes.cancel');
 
 
     Route::middleware(['has_open_quiz'])->group(function() {
@@ -51,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/words', WordController::class);
 
         /* Quizzes */
-        Route::resource('/quizzes', QuizController::class);
+        Route::resource('/quizzes', QuizController::class)->except(['show']);
     });
 
 });

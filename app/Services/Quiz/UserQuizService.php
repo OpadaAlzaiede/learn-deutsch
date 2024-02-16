@@ -48,7 +48,7 @@ class UserQuizService implements WriteQuizService, QueryQuizService
     {
         return Quiz::query()
                     ->where('user_id', Auth::id())
-                    ->isFinished()
+                    ->isFinished(config('quiz.is_not_finished'))
                     ->findOrFail($id);
     }
 
@@ -56,8 +56,18 @@ class UserQuizService implements WriteQuizService, QueryQuizService
     {
         $quiz = Quiz::query()
                     ->where('user_id', Auth::id())
-                    ->where('is_finished', 1)
+                    ->isFinished(config('quiz.is_finished'))
                     ->findOrFail($id);
+
+        $quiz->delete();
+    }
+
+    public function cancel(int $id)
+    {
+        $quiz = Quiz::query()
+            ->where('user_id', Auth::id())
+            ->isFinished(config('quiz.is_not_finished'))
+            ->findOrFail($id);
 
         $quiz->delete();
     }

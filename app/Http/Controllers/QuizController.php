@@ -90,6 +90,13 @@ class QuizController extends Controller
         return to_route('quizzes.index');
     }
 
+    /* Cancel the specified quiz */
+    public function cancel(int $id)
+    {
+        $this->queryQuizService->cancel($id);
+
+        return to_route('quizzes.index');
+    }
 
     public function getQuestions(int $quizId): Response {
 

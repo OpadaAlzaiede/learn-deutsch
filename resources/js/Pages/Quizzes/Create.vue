@@ -33,7 +33,7 @@
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Start new quiz</h2>
                 <Link :href="route('quizzes.index')">
-                    <button class="text-indigo-400 text-lg underline">Back</button>
+                    <button class="text-red-400 text-lg underline">cancel</button>
                 </Link>
             </div>
         </template>

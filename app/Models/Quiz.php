@@ -26,8 +26,8 @@ class Quiz extends Model
         return $this->hasMany(Question::class);
     }
 
-    public function scopeIsFinished(Builder $query): void {
+    public function scopeIsFinished(Builder $query, string $status): void {
 
-        $query->where('is_finished', 0);
+        $query->where('is_finished', $status);
     }
 }

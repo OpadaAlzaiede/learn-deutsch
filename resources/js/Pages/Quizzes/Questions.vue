@@ -43,6 +43,9 @@
         <template #header>
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Questions</h2>
+                <Link :href="route('quizzes.cancel', quizId)" method="post" as="button">
+                    <button class="text-red-400 text-lg underline">cancel quiz</button>
+                </Link>
             </div>
         </template>
         <div class="py-12">
@@ -53,12 +56,14 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="bg-white rounded-md shadow overflow-x-auto p-9 h-200">
                         <div class="text-xl">
-                            {{ question.word }}
+                            <label>
+                                {{ question.word }}
+                            </label>
                         </div>
                         <div>
                             <div v-for="type in types" :key="type.id" class="mt-4">
                                 <input @click="addChoice(question.id, type.id)" type="radio" :checked="solutions[question.id] === type.id" :name="question.id">
-                                {{type.type}}
+                                <label class="ml-2">{{type.type}}</label>
                             </div>
                         </div>
                     </div>

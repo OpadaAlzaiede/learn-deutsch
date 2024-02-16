@@ -18,12 +18,11 @@ class HasOpenQuiz
     {
         $user = Auth::user();
 
-        $openQuiz = $user->quizzes()->where('is_finished', 0)->first();
+        $openQuiz = $user->quizzes()
+            ->isFinished(config('quiz.is_not_finished'))
+            ->first();
 
         if(!is_null($openQuiz)) {
-
-            session()->flash('message', 'please submit your quiz first.');
-            session()->flash('success', false);
 
             return to_route('quizzes.questions', $openQuiz->id);
         }

@@ -25,7 +25,9 @@
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Quizzes</h2>
                 <Link :href="route('quizzes.create')">
-                    <button class="text-indigo-400 text-lg underline">start new quiz</button>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        new quiz
+                    </button>
                 </Link>
             </div>
         </template>
@@ -41,17 +43,19 @@
                                 <div class="mx-auto rounded overflow-hidden shadow-lg flex justify-between">
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2">{{quiz.language_level}}</div>
-                                        <p class="text-gray-700 text-base">
+                                        <p class="text-gray-700 text-base mt-4">
                                             {{ quiz.date }}
                                         </p>
                                     </div>
-                                    <div class="px-6 py-4 mt-2 flex flex-col">
+                                    <div class="px-6 py-4 flex flex-col">
                                         <div class="score text-xl">
                                             score: {{ quiz.score }} / {{ quiz.number_of_words }}
                                         </div>
-                                        <div class="action text-center">
+                                        <div class="action text-center mt-4">
                                             <Link :href="route('quizzes.destroy', quiz.id)" method="delete" as="button">
-                                                <button class="text-red-400 text-lg underline">delete</button>
+                                                <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                    delete
+                                                </button>
                                             </Link>
                                         </div>
                                     </div>

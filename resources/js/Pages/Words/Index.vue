@@ -22,6 +22,9 @@
 
     let languageLevelFilter = ref([]);
     let typeFilter = ref([]);
+    let showArabicTranslation = ref(true);
+    let showEnglishTranslation = ref(true);
+    let showAddedBy = ref(true);
 
     const { getRowColor } = useTypes();
 
@@ -52,28 +55,44 @@
             </div>
         </template>
 
-        <div class="flex justify-end max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="mt-4">
-                <VueMultiselect
-                    v-model="languageLevelFilter"
-                    :options="language_levels"
-                    :multiple="true"
-                    :close-on-select="true"
-                    placeholder="Filter levels"
-                    label="level"
-                    track-by="level"
-                />
+        <div class="flex justify-between max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="drop-down-filters flex justify-between mt-5">
+                <div>
+                    <VueMultiselect
+                        v-model="languageLevelFilter"
+                        :options="language_levels"
+                        :multiple="true"
+                        :close-on-select="true"
+                        placeholder="Filter levels"
+                        label="level"
+                        track-by="level"
+                    />
+                </div>
+                <div class="ml-4">
+                    <VueMultiselect
+                        v-model="typeFilter"
+                        :options="types"
+                        :multiple="true"
+                        :close-on-select="true"
+                        placeholder="Filter types"
+                        label="type"
+                        track-by="type"
+                    />
+                </div>
             </div>
-            <div class="mt-4">
-                <VueMultiselect
-                    v-model="typeFilter"
-                    :options="types"
-                    :multiple="true"
-                    :close-on-select="true"
-                    placeholder="Filter types"
-                    label="type"
-                    track-by="type"
-                />
+            <div class="checkbox-filter flex flex-col justify-between mt-5">
+                <div>
+                    <input type="checkbox" id="arabicTranslation" v-model="showArabicTranslation">
+                    <label for="arabicTranslation" class="ml-1">show arabic translation</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="englishTranslation" v-model="showEnglishTranslation">
+                    <label for="englishTranslation" class="ml-1">show english translation</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="addedBy" v-model="showAddedBy">
+                    <label for="addedBy" class="ml-1">show added by</label>
+                </div>
             </div>
         </div>
 
@@ -86,9 +105,9 @@
                             <template #header>
                                 <TableRow>
                                     <TableHeaderCell>WORD</TableHeaderCell>
-                                    <TableHeaderCell> ARABIC TRANSLATION</TableHeaderCell>
-                                    <TableHeaderCell>ENGLISH TRANSLATION</TableHeaderCell>
-                                    <TableHeaderCell>TYPE</TableHeaderCell>
+                                    <TableHeaderCell v-if="showArabicTranslation"> ARABIC TRANSLATION</TableHeaderCell>
+                                    <TableHeaderCell v-if="showEnglishTranslation">ENGLISH TRANSLATION</TableHeaderCell>
+                                    <TableHeaderCell v-if="showAddedBy">TYPE</TableHeaderCell>
                                     <TableHeaderCell>LEVEL</TableHeaderCell>
                                     <TableHeaderCell>ADDED BY</TableHeaderCell>
                                     <TableHeaderCell>ACTION</TableHeaderCell>
@@ -97,9 +116,9 @@
                             <template #default>
                                 <TableRow :class="getRowColor(word.type)" v-for="word in words.data" :key="word.id">
                                     <TableDataCell>{{ word.word }}</TableDataCell>
-                                    <TableDataCell>{{ word.ar_translation }}</TableDataCell>
-                                    <TableDataCell>{{ word.en_translation }}</TableDataCell>
-                                    <TableDataCell>{{ word.type }}</TableDataCell>
+                                    <TableDataCell v-if="showArabicTranslation">{{ word.ar_translation }}</TableDataCell>
+                                    <TableDataCell v-if="showEnglishTranslation">{{ word.en_translation }}</TableDataCell>
+                                    <TableDataCell v-if="showAddedBy">{{ word.type }}</TableDataCell>
                                     <TableDataCell>{{ word.language_level }}</TableDataCell>
                                     <TableDataCell class="text-sm">{{ word.user }}</TableDataCell>
                                     <TableDataCell class="flex justify-between">

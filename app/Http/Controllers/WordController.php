@@ -48,8 +48,8 @@ class WordController extends Controller
     public function create(): Response
     {
          return Inertia::render('Words/Create', [
-            'language_levels' => LanguageLevel::all(),
-            'types' => Type::all()
+            'language_levels' => $this->languageLevelService->index(),
+            'types' => $this->typeService->index()
         ]);
     }
 

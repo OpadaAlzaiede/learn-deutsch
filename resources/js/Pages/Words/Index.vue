@@ -5,6 +5,7 @@
     import { Inertia } from "@inertiajs/inertia";
     import Table from "@/Components/Table.vue";
     import TableRow from "@/Components/TableRow.vue";
+    import SearchInput from "@/Components/SearchInput.vue";
     import TableDataCell from "@/Components/TableDataCell.vue";
     import TableHeaderCell from "@/Components/TableHeaderCell.vue";
     import Pagination from "@/Components/Pagination.vue";
@@ -22,6 +23,7 @@
 
     let languageLevelFilter = ref([]);
     let typeFilter = ref([]);
+    let searchText = ref(null);
     let showArabicTranslation = ref(true);
     let showEnglishTranslation = ref(true);
     let showAddedBy = ref(true);
@@ -29,13 +31,19 @@
     const { getRowColor } = useTypes();
 
     watch(languageLevelFilter, value => {
-        Inertia.get(route('words.index'), { language_levels: value, types: typeFilter.value }, {
+        Inertia.get(route('words.index'), { language_levels: value, types: typeFilter.value, keyword: searchText.value }, {
             preserveState: true
         });
     });
 
     watch(typeFilter, value => {
-        Inertia.get(route('words.index'), { types: value, language_levels: languageLevelFilter.value }, {
+        Inertia.get(route('words.index'), { types: value, language_levels: languageLevelFilter.value, keyword: searchText.value }, {
+            preserveState: true
+        });
+    });
+
+    watch(searchText, value => {
+        Inertia.get(route('words.index'), { types: typeFilter.value, language_levels: languageLevelFilter.value, keyword: value }, {
             preserveState: true
         });
     });
@@ -57,8 +65,8 @@
             </div>
         </template>
 
-        <div class="flex justify-between max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="drop-down-filters flex justify-between mt-5">
+        <div class="flex justify-between max-w-7xl mx-auto sm:px-6 lg:px-8 mt-5">
+            <div class="drop-down-filters flex">
                 <div>
                     <VueMultiselect
                         v-model="languageLevelFilter"
@@ -81,8 +89,11 @@
                         track-by="type"
                     />
                 </div>
+                <div class="ml-4">
+                    <SearchInput v-model="searchText" placeholder="search word..."/>
+                </div>
             </div>
-            <div class="checkbox-filter flex flex-col justify-between mt-5">
+            <div class="checkbox-filter flex flex-col justify-between ">
                 <div>
                     <input type="checkbox" id="arabicTranslation" v-model="showArabicTranslation">
                     <label for="arabicTranslation" class="ml-1">show arabic translation</label>

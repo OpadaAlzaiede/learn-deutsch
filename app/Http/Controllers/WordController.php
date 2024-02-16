@@ -36,7 +36,11 @@ class WordController extends Controller
         $types = $this->typeService->index();
 
         return Inertia::render('Words/Index', [
-            'words' => $this->wordService->index($request->only('language_levels'), $request->only('types')),
+            'words' => $this->wordService->index(
+                $request->only('language_levels'),
+                $request->only('types'),
+                $request->input('keyword')
+            ),
             'types' => $types,
             'language_levels' => $language_levels
         ]);

@@ -9,11 +9,12 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class WordService {
 
-    public function index(array $languageLevels, array $types): LengthAwarePaginator {
+    public function index(array $languageLevels, array $types, ?string $keyword): LengthAwarePaginator {
 
         return Word::query()
                     ->levels($languageLevels)
                     ->types($types)
+                    ->word($keyword)
                     ->orderBy('language_level_id')
                     ->paginate(10)
                     ->withQueryString()

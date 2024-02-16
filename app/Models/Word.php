@@ -61,4 +61,12 @@ class Word extends Model
             });
         });
     }
+    public function scopeWord($query, ?string $keyword): void {
+
+        $query->when($keyword, function($query, $keyword) {
+
+            $query->where('word', 'LIKE', '%'.$keyword.'%');
+        });
+    }
+
 }

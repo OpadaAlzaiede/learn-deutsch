@@ -15,15 +15,16 @@
     import { useTypes } from "@/Compasables/types.js";
     import VueMultiselect from 'vue-multiselect';
 
-    defineProps({
+    let props = defineProps({
         words: Array,
         language_levels: Array,
-        types: Array
+        types: Array,
+        filters: Object
     });
 
     let languageLevelFilter = ref([]);
     let typeFilter = ref([]);
-    let searchText = ref(null);
+    let searchText = ref(props.filters.keyword);
     let showArabicTranslation = ref(true);
     let showEnglishTranslation = ref(true);
     let showAddedBy = ref(true);
@@ -32,19 +33,22 @@
 
     watch(languageLevelFilter, value => {
         Inertia.get(route('words.index'), { language_levels: value, types: typeFilter.value, keyword: searchText.value }, {
-            preserveState: true
+            preserveState: true,
+            replace: true
         });
     });
 
     watch(typeFilter, value => {
         Inertia.get(route('words.index'), { types: value, language_levels: languageLevelFilter.value, keyword: searchText.value }, {
-            preserveState: true
+            preserveState: true,
+            replace: true
         });
     });
 
     watch(searchText, value => {
         Inertia.get(route('words.index'), { types: typeFilter.value, language_levels: languageLevelFilter.value, keyword: value }, {
-            preserveState: true
+            preserveState: true,
+            replace: true
         });
     });
 
@@ -90,7 +94,8 @@
                     />
                 </div>
                 <div class="ml-4">
-                    <SearchInput v-model="searchText" placeholder="search word..."/>
+                    <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+                           v-model="searchText" placeholder="search word..."/>
                 </div>
             </div>
             <div class="checkbox-filter flex flex-col justify-between ">

@@ -42,7 +42,8 @@ class WordController extends Controller
                 $request->input('keyword')
             ),
             'types' => $types,
-            'language_levels' => $language_levels
+            'language_levels' => $language_levels,
+            'filters' => $request->only(['keyword'])
         ]);
     }
 

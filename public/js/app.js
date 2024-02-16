@@ -22527,14 +22527,16 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     words: Array,
     language_levels: Array,
-    types: Array
+    types: Array,
+    filters: Object
   },
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
+    var props = __props;
     var languageLevelFilter = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
     var typeFilter = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
-    var searchText = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
+    var searchText = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(props.filters.keyword);
     var showArabicTranslation = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(true);
     var showEnglishTranslation = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(true);
     var showAddedBy = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(true);
@@ -22546,7 +22548,8 @@ __webpack_require__.r(__webpack_exports__);
         types: typeFilter.value,
         keyword: searchText.value
       }, {
-        preserveState: true
+        preserveState: true,
+        replace: true
       });
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(typeFilter, function (value) {
@@ -22555,7 +22558,8 @@ __webpack_require__.r(__webpack_exports__);
         language_levels: languageLevelFilter.value,
         keyword: searchText.value
       }, {
-        preserveState: true
+        preserveState: true,
+        replace: true
       });
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(searchText, function (value) {
@@ -22564,10 +22568,17 @@ __webpack_require__.r(__webpack_exports__);
         language_levels: languageLevelFilter.value,
         keyword: value
       }, {
-        preserveState: true
+        preserveState: true,
+        replace: true
       });
     });
     var __returned__ = {
+      get props() {
+        return props;
+      },
+      set props(v) {
+        props = v;
+      },
       get languageLevelFilter() {
         return languageLevelFilter;
       },
@@ -24899,6 +24910,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
           "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["rounded-md shadow overflow-x-auto", quiz.score > quiz.number_of_words / 2 ? 'bg-green-100' : 'bg-red-100'])
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(quiz.language_level), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(quiz.date), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, " score: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(quiz.score) + " / " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(quiz.number_of_words), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
+          "preserve-scroll": "",
           href: _ctx.route('quizzes.destroy', quiz.id),
           method: "delete",
           as: "button"
@@ -25408,13 +25420,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Filter types",
         label: "type",
         "track-by": "type"
-      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SearchInput"], {
-        modelValue: $setup.searchText,
+      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "class": "border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm",
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $setup.searchText = $event;
         }),
         placeholder: "search word..."
-      }, null, 8 /* PROPS */, ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchText]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "checkbox",
         id: "arabicTranslation",
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {

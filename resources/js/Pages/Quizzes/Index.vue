@@ -25,11 +25,13 @@
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Quizzes</h2>
                 <Link :href="route('quizzes.create')">
-                    <button class="text-indigo-400 text-lg underline">Start new quiz</button>
+                    <button class="text-indigo-400 text-lg underline">start new quiz</button>
                 </Link>
             </div>
         </template>
-
+        <div class="py-12">
+            <FlashMessage />
+        </div>
         <div v-if="quizzes.data.length > 0">
             <div v-for="quiz in quizzes.data" :key="quiz.id">
                 <div class="py-12">
@@ -43,8 +45,15 @@
                                             {{ quiz.date }}
                                         </p>
                                     </div>
-                                    <div class="px-6 py-4 mt-2">
-                                        score: {{ quiz.score }} / {{ quiz.number_of_words }}
+                                    <div class="px-6 py-4 mt-2 flex flex-col">
+                                        <div class="score text-xl">
+                                            score: {{ quiz.score }} / {{ quiz.number_of_words }}
+                                        </div>
+                                        <div class="action text-center">
+                                            <Link :href="route('quizzes.destroy', quiz.id)" method="delete" as="button">
+                                                <button class="text-red-400 text-lg underline">delete</button>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

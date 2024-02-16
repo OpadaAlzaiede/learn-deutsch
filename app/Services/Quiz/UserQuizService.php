@@ -52,4 +52,13 @@ class UserQuizService implements WriteQuizService, QueryQuizService
                     ->findOrFail($id);
     }
 
+    public function destroy(int $id)
+    {
+        $quiz = Quiz::query()
+                    ->where('user_id', Auth::id())
+                    ->where('is_finished', 1)
+                    ->findOrFail($id);
+
+        $quiz->delete();
+    }
 }

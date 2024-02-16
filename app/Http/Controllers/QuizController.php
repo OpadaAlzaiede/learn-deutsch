@@ -11,7 +11,6 @@ use App\Services\Quiz\QuizService;
 use App\Services\Quiz\WriteQuizService;
 use App\Services\TypeService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -77,6 +76,20 @@ class QuizController extends Controller
             'id' => $quiz->id
         ]);
     }
+
+    /**
+     * delete a resource in storage.
+     */
+    public function destroy(int $id)
+    {
+        $this->queryQuizService->destroy($id);
+
+        session()->flash('message', 'quiz deleted successfully.');
+        session()->flash('success', true);
+
+        return to_route('quizzes.index');
+    }
+
 
     public function getQuestions(int $quizId): Response {
 

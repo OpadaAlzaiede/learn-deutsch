@@ -107,9 +107,9 @@
                                     <TableHeaderCell>WORD</TableHeaderCell>
                                     <TableHeaderCell v-if="showArabicTranslation"> ARABIC TRANSLATION</TableHeaderCell>
                                     <TableHeaderCell v-if="showEnglishTranslation">ENGLISH TRANSLATION</TableHeaderCell>
-                                    <TableHeaderCell v-if="showAddedBy">TYPE</TableHeaderCell>
+                                    <TableHeaderCell>TYPE</TableHeaderCell>
                                     <TableHeaderCell>LEVEL</TableHeaderCell>
-                                    <TableHeaderCell>ADDED BY</TableHeaderCell>
+                                    <TableHeaderCell v-if="showAddedBy">ADDED BY</TableHeaderCell>
                                     <TableHeaderCell>ACTION</TableHeaderCell>
                                 </TableRow>
                             </template>
@@ -118,9 +118,9 @@
                                     <TableDataCell>{{ word.word }}</TableDataCell>
                                     <TableDataCell v-if="showArabicTranslation">{{ word.ar_translation }}</TableDataCell>
                                     <TableDataCell v-if="showEnglishTranslation">{{ word.en_translation }}</TableDataCell>
-                                    <TableDataCell v-if="showAddedBy">{{ word.type }}</TableDataCell>
+                                    <TableDataCell>{{ word.type }}</TableDataCell>
                                     <TableDataCell>{{ word.language_level }}</TableDataCell>
-                                    <TableDataCell class="text-sm">{{ word.user }}</TableDataCell>
+                                    <TableDataCell v-if="showAddedBy" class="text-sm">{{ word.user }}</TableDataCell>
                                     <TableDataCell class="flex justify-between">
                                         <Link :href="route('words.issue.create', word.id)">
                                             <button class="text-sm text-red-400 underline">report issue</button>

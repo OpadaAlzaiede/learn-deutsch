@@ -6,6 +6,7 @@
     import PrimaryButton from '@/Components/PrimaryButton.vue';
     import TextInput from '@/Components/TextInput.vue';
     import VueMultiselect from 'vue-multiselect';
+    import FlashMessage from "@/Components/FlashMessage.vue";
     import { computed, onMounted, onUnmounted, ref } from 'vue';
     import { Inertia } from '@inertiajs/inertia';
 
@@ -44,6 +45,9 @@
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Questions</h2>
             </div>
         </template>
+        <div class="py-12">
+            <FlashMessage />
+        </div>
         <div class="py-12" v-for="question in questions.data" :key="question.id">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">

@@ -32,20 +32,28 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    /* Words */
-    Route::get('words/{id}/issue', [WordIssueController::class, 'create'])->name('words.issue.create');
-    Route::post('words/{id}/issue', [WordIssueController::class, 'store'])->name('words.issue.store');
-    Route::resource('/words', WordController::class);
+Route::middleware(['auth'])->group(function () {
 
     /* Quizzes */
     Route::get('/quizzes/{id}/questions', [QuizController::class, 'getQuestions'])->name('quizzes.questions');
     Route::post('/quizzes/submit', [QuizController::class, 'submit'])->name('quizzes.submit');
-    Route::resource('/quizzes', QuizController::class);
+
+
+    Route::middleware(['has_open_quiz'])->group(function() {
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+        /* Words */
+        Route::get('words/{id}/issue', [WordIssueController::class, 'create'])->name('words.issue.create');
+        Route::post('words/{id}/issue', [WordIssueController::class, 'store'])->name('words.issue.store');
+        Route::resource('/words', WordController::class);
+
+        /* Quizzes */
+        Route::resource('/quizzes', QuizController::class);
+    });
+
 });
 
 require __DIR__.'/auth.php';

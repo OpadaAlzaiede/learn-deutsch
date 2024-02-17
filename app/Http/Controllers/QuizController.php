@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Quizzes\StartNewQuizRequest;
-use App\Models\Question;
-use App\Models\Quiz;
+use App\Http\Resources\LanguageLevelResource;
 use App\Services\LanguageLevelService;
 use App\Services\Quiz\QueryQuizService;
 use App\Services\Quiz\QuizService;
@@ -40,12 +39,17 @@ class QuizController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $quizzes = $this->queryQuizService->index();
+        $languageLevels = $this->languageLevelService->index();
+        $quizzes = $this->queryQuizService->index($request->only('language_levels'));
+
+        session()->put('quizzes_url', \request()->fullUrl());
 
         return Inertia::render('Quizzes/Index', [
-            'quizzes' => $quizzes
+            'quizzes' => $quizzes,
+            'language_levels' => LanguageLevelResource::collection($languageLevels),
+            'filters' => $request->only(['language_levels'])
         ]);
     }
 
@@ -86,6 +90,11 @@ class QuizController extends Controller
 
         session()->flash('message', 'quiz deleted successfully.');
         session()->flash('success', true);
+
+        if(session()->has('quizzes_url')) {
+
+            return redirect(session('quizzes_url'));
+        }
 
         return to_route('quizzes.index');
     }

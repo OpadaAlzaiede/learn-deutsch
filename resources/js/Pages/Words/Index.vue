@@ -22,8 +22,10 @@
         filters: Object
     });
 
-    let languageLevelFilter = ref([]);
-    let typeFilter = ref([]);
+    console.log(props.filters);
+
+    let languageLevelFilter = ref(props.filters.language_levels);
+    let typeFilter = ref(props.filters.types);
     let searchText = ref(props.filters.keyword);
     let showArabicTranslation = ref(true);
     let showEnglishTranslation = ref(true);

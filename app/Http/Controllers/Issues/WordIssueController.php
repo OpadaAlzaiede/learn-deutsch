@@ -40,7 +40,7 @@ class WordIssueController extends Controller
             'date' => Carbon::now()
         ]);
 
-        session()->flash('message', 'created successfully');
+        session()->flash('message', 'issue created successfully');
         session()->flash('success', true);
 
         return to_route('words.index');

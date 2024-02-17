@@ -10,8 +10,18 @@
     import { useTypes } from "@/Compasables/types.js";
     import VueMultiselect from 'vue-multiselect';
 
-    defineProps({
-        quizzes: Array
+    let props = defineProps({
+        quizzes: Array,
+        language_levels: Array,
+        filters: Object
+    });
+
+    let languageLevelFilter = ref(props.filters.language_levels);
+
+    watch(languageLevelFilter, value => {
+        Inertia.get(route('quizzes.index'), { language_levels: value }, {
+            preserveState: true
+        });
     });
 
 </script>
@@ -32,6 +42,21 @@
         </template>
         <div class="py-12">
             <FlashMessage />
+        </div>
+        <div class="flex justify-between max-w-7xl mx-auto sm:px-6 lg:px-8 mt-5">
+            <div class="drop-down-filters flex">
+                <div>
+                    <VueMultiselect
+                        v-model="languageLevelFilter"
+                        :options="language_levels"
+                        :multiple="true"
+                        :close-on-select="true"
+                        placeholder="Filter levels"
+                        label="level"
+                        track-by="level"
+                    />
+                </div>
+            </div>
         </div>
         <div v-if="quizzes.data.length > 0">
             <div v-for="quiz in quizzes.data" :key="quiz.id">

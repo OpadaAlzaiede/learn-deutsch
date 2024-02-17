@@ -26,6 +26,19 @@ class Quiz extends Model
         return $this->hasMany(Question::class);
     }
 
+    public function scopeLevels($query, array $levels) {
+
+        $query->when($levels ?? null, function($query, $levels) {
+
+            $levelNames = collect($levels)->flatten();
+
+            $query->whereHas('languageLevel', function($levelQuery) use ($levelNames){
+
+                $levelQuery->whereIn('level', $levelNames);
+            });
+        });
+    }
+
     public function scopeIsFinished(Builder $query, string $status): void {
 
         $query->where('is_finished', $status);

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreWordRequest;
+use App\Http\Resources\LanguageLevelResource;
+use App\Http\Resources\TypeResource;
 use App\Models\LanguageLevel;
 use App\Models\Type;
 use App\Models\Word;
@@ -41,9 +43,9 @@ class WordController extends Controller
                 $request->only('types'),
                 $request->input('keyword')
             ),
-            'types' => $types,
-            'language_levels' => $language_levels,
-            'filters' => $request->only(['keyword'])
+            'types' => TypeResource::collection($types),
+            'language_levels' => LanguageLevelResource::collection($language_levels),
+            'filters' => $request->only(['language_levels', 'types', 'keyword'])
         ]);
     }
 

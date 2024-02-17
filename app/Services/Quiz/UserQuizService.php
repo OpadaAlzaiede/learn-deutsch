@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class UserQuizService implements WriteQuizService, QueryQuizService
 {
 
-    public function index() {
+    public function index(array $languageLevels) {
 
         return Quiz::query()
                     ->where('user_id', Auth::id())
-                    ->where('is_finished', 1)
+                    ->levels($languageLevels)
+                    ->isFinished(config('quiz.is_finished'))
                     ->orderBy('date', 'DESC')
-                    ->paginate(5)
+                    ->paginate(3)
                     ->withQueryString()
                     ->through(fn ($quiz) => [
                         'id' => $quiz->id,

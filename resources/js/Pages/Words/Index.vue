@@ -29,7 +29,6 @@
     let searchText = ref(props.filters.keyword);
     let showArabicTranslation = ref(true);
     let showEnglishTranslation = ref(true);
-    let showAddedBy = ref(true);
 
     const { getRowColor } = useTypes();
 
@@ -109,10 +108,6 @@
                     <input type="checkbox" id="englishTranslation" v-model="showEnglishTranslation">
                     <label for="englishTranslation" class="ml-1">show english translation</label>
                 </div>
-                <div>
-                    <input type="checkbox" id="addedBy" v-model="showAddedBy">
-                    <label for="addedBy" class="ml-1">show added by</label>
-                </div>
             </div>
         </div>
 
@@ -129,7 +124,6 @@
                                     <TableHeaderCell v-if="showEnglishTranslation">ENGLISH TRANSLATION</TableHeaderCell>
                                     <TableHeaderCell>TYPE</TableHeaderCell>
                                     <TableHeaderCell>LEVEL</TableHeaderCell>
-                                    <TableHeaderCell v-if="showAddedBy">ADDED BY</TableHeaderCell>
                                     <TableHeaderCell>ACTION</TableHeaderCell>
                                 </TableRow>
                             </template>
@@ -140,7 +134,6 @@
                                     <TableDataCell v-if="showEnglishTranslation">{{ word.en_translation }}</TableDataCell>
                                     <TableDataCell>{{ word.type }}</TableDataCell>
                                     <TableDataCell>{{ word.language_level }}</TableDataCell>
-                                    <TableDataCell v-if="showAddedBy" class="text-sm">{{ word.user }}</TableDataCell>
                                     <TableDataCell class="flex justify-between">
                                         <Link :href="route('words.issue.create', word.id)">
                                             <button class="text-sm text-red-400 underline">report issue</button>

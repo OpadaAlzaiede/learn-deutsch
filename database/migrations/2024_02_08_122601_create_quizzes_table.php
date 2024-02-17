@@ -20,6 +20,8 @@ return new class extends Migration
             $table->datetime('date');
             $table->integer('score')->default(0);
             $table->tinyInteger('is_finished')->default(0)->comment('0 is not finished yet, 1 is finished');
+
+            $table->softDeletes();
         });
     }
 

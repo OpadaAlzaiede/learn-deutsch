@@ -86,7 +86,7 @@ class QuizController extends Controller
      */
     public function destroy(int $id)
     {
-        $this->queryQuizService->destroy($id);
+        $this->writeQuizService->destroy($id);
 
         session()->flash('message', 'quiz deleted successfully.');
         session()->flash('success', true);
@@ -102,7 +102,7 @@ class QuizController extends Controller
     /* Cancel the specified quiz */
     public function cancel(int $id)
     {
-        $this->queryQuizService->cancel($id);
+        $this->writeQuizService->cancel($id);
 
         return to_route('quizzes.index');
     }

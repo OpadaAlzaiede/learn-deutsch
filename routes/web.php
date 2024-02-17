@@ -52,7 +52,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/words', WordController::class);
 
         /* Quizzes */
-        Route::resource('/quizzes', QuizController::class)->except(['show']);
+        Route::post('quizzes', [QuizController::class, 'store'])->name('quizzes.store')->middleware('quiz_rate_limiter');
+        Route::delete('quizzes/{id}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
+        Route::get('quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+        Route::get('quizzes/create', [QuizController::class, 'create'])->name('quizzes.create');
     });
 
 });

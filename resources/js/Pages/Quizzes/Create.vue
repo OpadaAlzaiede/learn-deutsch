@@ -41,6 +41,13 @@
         </template>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="overflow-hidden sm:rounded-lg text-red-700">
+                    <h3>Please note that you are limited to 5 quizzes per day.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="bg-white rounded-md shadow overflow-x-auto p-9 h-200">
                         <form @submit.prevent="submit">

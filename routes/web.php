@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use \App\Http\Controllers\WordController;
 use \App\Http\Controllers\Issues\WordIssueController;
 use \App\Http\Controllers\QuizController;
+use \App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,9 +40,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/quizzes/submit', [QuizController::class, 'submit'])->name('quizzes.submit');
     Route::post('/quizzes/{id}/cancel', [QuizController::class, 'cancel'])->name('quizzes.cancel');
 
+    /* Users */
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
     Route::middleware(['has_open_quiz'])->group(function() {
 
+        /* Profile */
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

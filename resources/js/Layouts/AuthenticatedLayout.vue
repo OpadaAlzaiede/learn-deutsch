@@ -44,7 +44,7 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                             <div v-if="hasRole(adminRole())" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('quizzes.index')" :active="$page.component.startsWith('Issue')">
+                                <NavLink :href="route('issues.index')" :active="$page.component.startsWith('Issue')">
                                     Issues
                                 </NavLink>
                             </div>

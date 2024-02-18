@@ -16,12 +16,12 @@
 </script>
 
 <template>
-    <Head title="Users" />
+    <Head title="Word Issues" />
 
     <AuthenticatedLayout>
         <template #header>
             <div class="flex justify-between">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Users</h2>
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Word Issues</h2>
             </div>
         </template>
 
@@ -30,7 +30,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="bg-white rounded-md shadow overflow-x-auto">
-                        Users page
+                        Issues page
                     </div>
                 </div>
             </div>

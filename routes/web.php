@@ -8,6 +8,7 @@ use \App\Http\Controllers\WordController;
 use \App\Http\Controllers\Issues\WordIssueController;
 use \App\Http\Controllers\QuizController;
 use \App\Http\Controllers\Admin\UserController;
+use \App\Http\Controllers\Admin\IssueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/quizzes/submit', [QuizController::class, 'submit'])->name('quizzes.submit');
     Route::post('/quizzes/{id}/cancel', [QuizController::class, 'cancel'])->name('quizzes.cancel');
 
-    /* Users */
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-
     Route::middleware(['has_open_quiz'])->group(function() {
 
         /* Profile */
@@ -60,6 +58,17 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('quizzes/{id}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
         Route::get('quizzes', [QuizController::class, 'index'])->name('quizzes.index');
         Route::get('quizzes/create', [QuizController::class, 'create'])->name('quizzes.create');
+    });
+
+
+
+    Route::prefix('admin')->middleware(['role:' . config('roles.admin')])->group(function() {
+
+        /* Users */
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+        /* Issues */
+        Route::get('issues', [IssueController::class, 'index'])->name('issues.index');
     });
 
 });

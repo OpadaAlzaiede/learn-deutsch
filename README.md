@@ -7,9 +7,11 @@ This is a web application. it helps Deutsch new learners to learn the language w
 
 ### Basic functionalities:
 1. Auth:
-You can register new account, login with existing one and logout from logged account.
+
+users can register new account, login with existing one and logout from logged account.
 
 2. Words:
+
 users can view all words and filter them using a bunch of useful filters.
 
 users can add new words, and the application will handle adding the translation to it with the help of Google translate api.
@@ -17,6 +19,7 @@ users can add new words, and the application will handle adding the translation 
 users can submit issues about certain words, and suggest a feedback about it.
 
 3. Quizzes:
+
 users can start a new quiz selecting a language level and desired number of words (users are limited to configured number of quizzes per day).
 
 users can cancel performing a quiz.
@@ -26,6 +29,7 @@ users can show a list of their submitted quizzes and results with a filter of la
 users can delete a submitted quiz.
 
 4. Profile:
+
 users can update certain profile info.
 
 users can delete their account.

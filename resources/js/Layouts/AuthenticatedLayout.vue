@@ -7,8 +7,11 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 import { usePermission } from "@/Compasables/permissions";
+import { getConstants } from "@/Compasables/constants";
 
 const { hasRole } = usePermission();
+const { adminRole, userRole } = getConstants();
+
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -40,12 +43,12 @@ const showingNavigationDropdown = ref(false);
                                     Quizzes
                                 </NavLink>
                             </div>
-                            <div v-if="hasRole('admin-role')" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div v-if="hasRole(adminRole())" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('quizzes.index')" :active="$page.component.startsWith('Issue')">
                                     Issues
                                 </NavLink>
                             </div>
-                            <div v-if="hasRole('admin-role')" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div v-if="hasRole(adminRole())" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('quizzes.index')" :active="$page.component.startsWith('User')">
                                     Users
                                 </NavLink>

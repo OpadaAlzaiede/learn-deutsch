@@ -21113,6 +21113,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_ResponsiveNavLink_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/ResponsiveNavLink.vue */ "./resources/js/Components/ResponsiveNavLink.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Compasables_permissions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Compasables/permissions */ "./resources/js/Compasables/permissions.js");
+/* harmony import */ var _Compasables_constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Compasables/constants */ "./resources/js/Compasables/constants.js");
+
 
 
 
@@ -21128,9 +21130,14 @@ __webpack_require__.r(__webpack_exports__);
     __expose();
     var _usePermission = (0,_Compasables_permissions__WEBPACK_IMPORTED_MODULE_7__.usePermission)(),
       hasRole = _usePermission.hasRole;
+    var _getConstants = (0,_Compasables_constants__WEBPACK_IMPORTED_MODULE_8__.getConstants)(),
+      adminRole = _getConstants.adminRole,
+      userRole = _getConstants.userRole;
     var showingNavigationDropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var __returned__ = {
       hasRole: hasRole,
+      adminRole: adminRole,
+      userRole: userRole,
       showingNavigationDropdown: showingNavigationDropdown,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       ApplicationLogo: _Components_ApplicationLogo_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -21143,6 +21150,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       get usePermission() {
         return _Compasables_permissions__WEBPACK_IMPORTED_MODULE_7__.usePermission;
+      },
+      get getConstants() {
+        return _Compasables_constants__WEBPACK_IMPORTED_MODULE_8__.getConstants;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -22071,6 +22081,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_PrimaryButton_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/PrimaryButton.vue */ "./resources/js/Components/PrimaryButton.vue");
 /* harmony import */ var _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/TextInput.vue */ "./resources/js/Components/TextInput.vue");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.esm.js");
+/* harmony import */ var _Compasables_constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Compasables/constants */ "./resources/js/Compasables/constants.js");
+
 
 
 
@@ -22096,10 +22108,13 @@ __webpack_require__.r(__webpack_exports__);
       createForm.language_level_id = createForm.language_level_id.id;
       createForm.post(route('quizzes.store'));
     };
+    var _getConstants = (0,_Compasables_constants__WEBPACK_IMPORTED_MODULE_7__.getConstants)(),
+      maximumNumberOfAllowedQuizzes = _getConstants.maximumNumberOfAllowedQuizzes;
     var __returned__ = {
       props: props,
       createForm: createForm,
       submit: submit,
+      maximumNumberOfAllowedQuizzes: maximumNumberOfAllowedQuizzes,
       AuthenticatedLayout: _Layouts_AuthenticatedLayout_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
       get Head() {
         return _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head;
@@ -22116,6 +22131,9 @@ __webpack_require__.r(__webpack_exports__);
       TextInput: _Components_TextInput_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
       get VueMultiselect() {
         return vue_multiselect__WEBPACK_IMPORTED_MODULE_6__["default"];
+      },
+      get getConstants() {
+        return _Compasables_constants__WEBPACK_IMPORTED_MODULE_7__.getConstants;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -23414,7 +23432,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Quizzes ")];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["href", "active"])]), $setup.hasRole('admin-role') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["NavLink"], {
+  }, 8 /* PROPS */, ["href", "active"])]), $setup.hasRole($setup.adminRole()) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["NavLink"], {
     href: _ctx.route('quizzes.index'),
     active: _ctx.$page.component.startsWith('Issue')
   }, {
@@ -23422,7 +23440,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Issues ")];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["href", "active"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasRole('admin-role') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["NavLink"], {
+  }, 8 /* PROPS */, ["href", "active"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasRole($setup.adminRole()) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["NavLink"], {
     href: _ctx.route('quizzes.index'),
     active: _ctx.$page.component.startsWith('User')
   }, {
@@ -24739,29 +24757,31 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   type: "button",
   "class": "text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 }, " cancel ", -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_4 = {
   "class": "py-12"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "overflow-hidden sm:rounded-lg text-red-700"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Please note that you are limited to 5 quizzes per day.")])])], -1 /* HOISTED */);
+};
 var _hoisted_5 = {
-  "class": "py-12"
+  "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
 };
 var _hoisted_6 = {
-  "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
+  "class": "overflow-hidden sm:rounded-lg text-red-700"
 };
 var _hoisted_7 = {
-  "class": "bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
+  "class": "py-12"
 };
 var _hoisted_8 = {
-  "class": "bg-white rounded-md shadow overflow-x-auto p-9 h-200"
+  "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
 };
 var _hoisted_9 = {
-  "class": "mt-4"
+  "class": "bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
 };
 var _hoisted_10 = {
+  "class": "bg-white rounded-md shadow overflow-x-auto p-9 h-200"
+};
+var _hoisted_11 = {
+  "class": "mt-4"
+};
+var _hoisted_12 = {
   "class": "mt-4 max-w-6xl flex lg:justify-center"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -24779,7 +24799,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8 /* PROPS */, ["href"])])];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Please note that you are limited to " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.maximumNumberOfAllowedQuizzes()) + " quizzes per day.", 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
         "for": "language_levels",
@@ -24795,7 +24815,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Pick one",
         label: "level",
         "track-by": "id"
-      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
+      }, null, 8 /* PROPS */, ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputLabel"], {
         "for": "numberOfWords",
         value: "number of words"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TextInput"], {
@@ -24814,7 +24834,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8 /* PROPS */, ["max", "modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["InputError"], {
         "class": "mt-2",
         message: $setup.createForm.errors.number_of_words
-      }, null, 8 /* PROPS */, ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["PrimaryButton"], {
+      }, null, 8 /* PROPS */, ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["PrimaryButton"], {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["max-w-3xl ms-4", {
           'opacity-25': $setup.createForm.processing
         }]),
@@ -25583,6 +25603,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1 /* STABLE */
   })], 64 /* STABLE_FRAGMENT */);
+}
+
+/***/ }),
+
+/***/ "./resources/js/Compasables/constants.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Compasables/constants.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getConstants: () => (/* binding */ getConstants)
+/* harmony export */ });
+function getConstants() {
+  var adminRole = function adminRole() {
+    return 'admin-role';
+  };
+  var userRole = function userRole() {
+    return 'user-role';
+  };
+  var maximumNumberOfAllowedQuizzes = function maximumNumberOfAllowedQuizzes() {
+    return 5;
+  };
+  return {
+    adminRole: adminRole,
+    userRole: userRole,
+    maximumNumberOfAllowedQuizzes: maximumNumberOfAllowedQuizzes
+  };
 }
 
 /***/ }),

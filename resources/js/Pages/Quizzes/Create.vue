@@ -6,6 +6,8 @@
     import PrimaryButton from '@/Components/PrimaryButton.vue';
     import TextInput from '@/Components/TextInput.vue';
     import VueMultiselect from 'vue-multiselect';
+    import { getConstants } from "@/Compasables/constants";
+
 
 
     const props = defineProps({
@@ -22,6 +24,8 @@
         createForm.language_level_id = createForm.language_level_id.id;
         createForm.post(route('quizzes.store'));
     };
+
+    const { maximumNumberOfAllowedQuizzes } = getConstants();
 
 </script>
 
@@ -42,7 +46,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden sm:rounded-lg text-red-700">
-                    <h3>Please note that you are limited to 5 quizzes per day.</h3>
+                    <h3>Please note that you are limited to {{ maximumNumberOfAllowedQuizzes() }} quizzes per day.</h3>
                 </div>
             </div>
         </div>

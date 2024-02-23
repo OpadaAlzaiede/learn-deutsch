@@ -3,18 +3,32 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use function Illuminate\Translation\load;
 
 class UserController extends Controller
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return Inertia::render('Users/Index');
+        $users = $this->userService->index($request->input('keyword'));
+
+        return Inertia::render('Users/Index',[
+            'users' => $users,
+            'filters' => $request->only(['keyword'])
+        ]);
     }
 
     /**

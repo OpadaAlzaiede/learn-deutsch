@@ -54,4 +54,20 @@ class User extends Authenticatable
 
         return $this->hasMany(Issue::class);
     }
+
+    public function scopeRole($query, string $role): void {
+
+        $query->whereHas('roles', function ($q) use ($role){
+
+            return $q->where('name', $role);
+        });
+    }
+
+    public function scopeName($query, ?string $keyword): void {
+
+        $query->when($keyword, function($query, $keyword) {
+
+            $query->where('name', 'LIKE', '%'.$keyword.'%');
+        });
+    }
 }

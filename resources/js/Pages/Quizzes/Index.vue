@@ -33,11 +33,6 @@
         <template #header>
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Quizzes</h2>
-                <Link :href="route('quizzes.create')">
-                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        new quiz
-                    </button>
-                </Link>
             </div>
         </template>
         <div class="py-12">

@@ -65,9 +65,7 @@ class Word extends Model
 
         $query->when($keyword, function($query, $keyword) {
 
-            $query->where('word', 'LIKE', '%'.$keyword.'%')
-                    ->orWhere('en_translation', 'LIKE', '%'.$keyword.'%')
-                    ->orWhere('ar_translation', 'LIKE', '%'.$keyword.'%');
+            $query->where('word', 'LIKE', '%'.$keyword.'%');
         });
     }
 

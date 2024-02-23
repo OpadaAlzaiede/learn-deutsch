@@ -144,6 +144,15 @@
                     <pagination class="mt-6" :links="words.links" />
                 </div>
             </div>
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 items-center flex justify-center">
+                <div>
+                    <Link :href="route('quizzes.create')">
+                        <button type="button" class="text-xl w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            start quiz
+                        </button>
+                    </Link>
+                </div>
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>

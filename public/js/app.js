@@ -21732,10 +21732,11 @@ __webpack_require__.r(__webpack_exports__);
     var props = __props;
     var createForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
       issue_title: '',
-      suggested_solution: ''
+      suggested_solution: '',
+      word_id: props.word.id
     });
     var submit = function submit() {
-      createForm.post(route('words.issue.store', props.word.id));
+      createForm.post(route('words.issue.store'));
     };
     var __returned__ = {
       props: props,

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Issues;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class WordIssueRequest extends FormRequest
 {
@@ -23,7 +24,8 @@ class WordIssueRequest extends FormRequest
     {
         return [
             'issue_title' => ['required', 'string', 'max:100'],
-            'suggested_solution' => ['required']
+            'suggested_solution' => ['required'],
+            'word_id' => ['required', 'int', Rule::exists('words', 'id')]
         ];
     }
 }

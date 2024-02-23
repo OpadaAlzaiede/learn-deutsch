@@ -15,10 +15,11 @@
     const createForm = useForm({
         issue_title: '',
         suggested_solution: '',
+        word_id: props.word.id
     });
 
     const submit = () => {
-        createForm.post(route('words.issue.store', props.word.id));
+        createForm.post(route('words.issue.store'));
     };
 
 </script>

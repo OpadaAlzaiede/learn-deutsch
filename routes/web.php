@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
 
         /* Words */
         Route::get('words/{id}/issue', [WordIssueController::class, 'create'])->name('words.issue.create');
-        Route::post('words/{id}/issue', [WordIssueController::class, 'store'])->name('words.issue.store');
+        Route::post('words/issue', [WordIssueController::class, 'store'])->name('words.issue.store');
         Route::resource('/words', WordController::class);
 
         /* Quizzes */

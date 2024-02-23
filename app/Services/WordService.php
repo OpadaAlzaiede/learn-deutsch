@@ -39,4 +39,9 @@ class WordService {
 
         TranslationJob::dispatch($word);
     }
+
+    public function find(int $id) {
+
+        return Word::findOrFail($id);
+    }
 }

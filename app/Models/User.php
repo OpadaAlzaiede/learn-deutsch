@@ -49,4 +49,9 @@ class User extends Authenticatable
 
         return $this->hasMany(Quiz::class)->orderBy('date', 'DESC');
     }
+
+    public function issues(): HasMany {
+
+        return $this->hasMany(Issue::class);
+    }
 }

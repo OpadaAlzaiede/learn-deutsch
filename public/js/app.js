@@ -25434,9 +25434,6 @@ var _hoisted_6 = {
   "class": "bg-white rounded-md shadow overflow-x-auto"
 };
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "text-sm text-red-400 underline"
-}, "block", -1 /* HOISTED */);
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "text-sm text-indigo-400 underline"
 }, "manage", -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -25518,10 +25515,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 }, {
                   "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
-                      href: _ctx.route('words.issue.create', user.id)
+                      method: "put",
+                      as: "button",
+                      href: _ctx.route('users.change-state', user.id)
                     }, {
                       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                        return [_hoisted_7];
+                        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+                          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-sm underline", user.is_blocked ? 'text-indigo-400' : 'text-red-400'])
+                        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.is_blocked ? 'unblock' : 'block'), 3 /* TEXT, CLASS */)];
                       }),
                       _: 2 /* DYNAMIC */
                     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
@@ -25529,7 +25530,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       href: _ctx.route('words.issue.create', user.id)
                     }, {
                       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                        return [_hoisted_8];
+                        return [_hoisted_7];
                       }),
                       _: 2 /* DYNAMIC */
                     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])];

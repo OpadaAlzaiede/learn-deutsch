@@ -15,7 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
+        for ($i = 1; $i <= 10; $i++) {
+
+            $user = \App\Models\User::factory()->create();
+
+            $user->assignRole(config('roles.user'));
+        }
 
         $types = Type::all();
         $levels = LanguageLevel::all();

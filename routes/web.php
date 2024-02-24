@@ -66,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
 
         /* Users */
         Route::get('users', [UserController::class, 'index'])->name('users.index');
+        Route::put('users/{id}/change-state', \App\Http\Controllers\Admin\UserBlockController::class)->name('users.change-state');
 
         /* Issues */
         Route::get('issues', [IssueController::class, 'index'])->name('issues.index');

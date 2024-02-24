@@ -69,8 +69,10 @@
                                     <TableDataCell>{{ user.email }}</TableDataCell>
                                     <TableDataCell>{{ user.registered_at }}</TableDataCell>
                                     <TableDataCell class="">
-                                        <Link :href="route('words.issue.create', user.id)">
-                                            <button class="text-sm text-red-400 underline">block</button>
+                                        <Link method="put" as="button" :href="route('users.change-state', user.id)">
+                                            <button class="text-sm underline" :class="user.is_blocked ? 'text-indigo-400' : 'text-red-400'">
+                                                {{user.is_blocked ? 'unblock' : 'block'}}
+                                            </button>
                                         </Link>
                                         <Link class="ml-4" :href="route('words.issue.create', user.id)">
                                             <button class="text-sm text-indigo-400 underline">manage</button>

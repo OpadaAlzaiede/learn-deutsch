@@ -70,4 +70,9 @@ class User extends Authenticatable
             $query->where('name', 'LIKE', '%'.$keyword.'%');
         });
     }
+
+    public function isBlocked(): bool {
+
+        return $this->is_blocked;
+    }
 }

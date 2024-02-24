@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckIfBlocked;
 use App\Http\Middleware\HasOpenQuiz;
 use App\Http\Middleware\QuizRateLimiter;
 use App\Http\Middleware\QuizVerifier;
@@ -72,6 +73,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => RoleMiddleware::class,
         'has_open_quiz' => HasOpenQuiz::class,
-        'quiz_rate_limiter' => QuizRateLimiter::class
+        'quiz_rate_limiter' => QuizRateLimiter::class,
+        'is_blocked' => CheckIfBlocked::class
     ];
 }

@@ -6,6 +6,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import FlashMessage from "@/Components/FlashMessage.vue";
+
 
 defineProps({
     canResetPassword: {
@@ -36,6 +38,8 @@ const submit = () => {
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
+
+        <FlashMessage />
 
         <form @submit.prevent="submit">
             <div>

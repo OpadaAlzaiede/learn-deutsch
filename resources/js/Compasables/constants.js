@@ -10,10 +10,15 @@ export function getConstants() {
         return 'user-role';
     }
 
+    const createWordsPermission = () => {
+
+        return 'add-words-permissions';
+    }
+
     const maximumNumberOfAllowedQuizzes = () => {
 
         return 5;
     }
 
-    return { adminRole, userRole, maximumNumberOfAllowedQuizzes };
+    return { adminRole, userRole, maximumNumberOfAllowedQuizzes, createWordsPermission };
 }

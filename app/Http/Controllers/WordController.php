@@ -65,6 +65,11 @@ class WordController extends Controller
      */
     public function store(StoreWordRequest $request)
     {
+        if ($request->user()->cannot('create', Word::class)) {
+
+            abort(403);
+        }
+
         $this->wordService->store($request->validated());
 
         session()->flash('message', 'created successfully, the translation will be added soon.');

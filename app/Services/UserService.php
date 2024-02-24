@@ -21,7 +21,7 @@ class UserService
                 'name' => $user->name,
                 'email' => $user->email,
                 'registered_at' => Carbon::parse($user->created_at)->toDateString(),
-                'is_blocked' => $user->is_blocked
+                'is_blocked' => $user->is_blocked,
             ]);
     }
 

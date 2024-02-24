@@ -14,6 +14,10 @@
     import FlashMessage from "@/Components/FlashMessage.vue";
     import { useTypes } from "@/Compasables/types.js";
     import VueMultiselect from 'vue-multiselect';
+    import { usePermission } from "@/Compasables/permissions";
+    import { getConstants } from "@/Compasables/constants";
+
+
 
     let props = defineProps({
         words: Array,
@@ -21,6 +25,10 @@
         types: Array,
         filters: Object
     });
+
+    const { hasPermission } = usePermission();
+    const { createWordsPermission } = getConstants();
+
 
     let languageLevelFilter = ref(props.filters.language_levels);
     let typeFilter = ref(props.filters.types);
@@ -60,11 +68,13 @@
         <template #header>
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Words</h2>
-                <Link :href="route('words.create')">
-                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        create
-                    </button>
-                </Link>
+                <div v-if="hasPermission(createWordsPermission())">
+                    <Link :href="route('words.create')">
+                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            create
+                        </button>
+                    </Link>
+                </div>
             </div>
         </template>
 
